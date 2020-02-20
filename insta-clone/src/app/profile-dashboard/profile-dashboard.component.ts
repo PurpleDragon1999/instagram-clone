@@ -17,7 +17,7 @@ export class ProfileDashboardComponent implements OnInit {
   following: Number = 0;
   followers: Number = 0;
   name: String = "loading...";
-  bio: String = "I am a Software Developer. Currently I am an Intern at Cyber Group. I am pursuing B.Tech from Sharda University.";
+  bio: String = "loading...";
   
   ngOnInit() {
     this.loadUserData();
@@ -26,6 +26,8 @@ export class ProfileDashboardComponent implements OnInit {
   loadUserData(){
     this.sendReq.userData().subscribe(res => {
       this.userArray = res;
+      console.log("************************************************")
+      console.log(res);
       this.setUserData();
     });
   }

@@ -1,6 +1,9 @@
+
 import { SendHttpRequestService } from './../send-http-request.service';
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FileUploader, FileUploaderOptions } from 'ng2-file-upload';
+import { Component, ViewChild, ElementRef, OnInit} from '@angular/core';
+import { Router } from '@angular/router';
+import { HttpResponse } from '@angular/common/http';
 declare function addcomment(): any;
 
 const URL = 'http://localhost:8080/upload';
@@ -10,12 +13,25 @@ const URL = 'http://localhost:8080/upload';
   templateUrl: './feed.component.html',
   styleUrls: ['./feed.component.css']
 })
+ 
 
 export class FeedComponent implements OnInit {
-
+    
   constructor(private sendReq: SendHttpRequestService) { }
   @ViewChild('modal', {static: false}) modal: ElementRef;
   @ViewChild('caption', {static: false}) caption: ElementRef;
+  @ViewChild('commentarea', {static: false}) commentarea: ElementRef;
+    show:Boolean=false;
+    buttonName:String="follow";
+
+    follow(){
+      this.show = !this.show;
+    // CHANGE THE NAME OF THE BUTTON.
+    if(this.show)  
+      this.buttonName = "follow";
+    else
+      this.buttonName = "unfollow";
+    }
 
   postArray: any;
   basePath: String = "http://localhost:8081/";
@@ -43,6 +59,21 @@ export class FeedComponent implements OnInit {
     });
   }
 
+  res: any;
+  addcomment(text:string){
+      let commentObj = {
+      //hande of user who liked,photoID and comment
+      ownerID: this.sendReq.jsonDecoder(localStorage.getItem("token")).data._id,  //from token
+      // upload_ID: this.photoID.nativeElement.value,
+      comment:this.commentarea.nativeElement.value
+    }
+
+      console.log(commentObj);
+      this.sendReq.commentPost(commentObj).subscribe(res => this.res = res);
+      console.log(this.res);
+  }
+
+
   ngOnInit() {
     this.loadPosts();
     this.uploader.onAfterAddingFile = (file) => {
@@ -61,3 +92,26 @@ export class FeedComponent implements OnInit {
     this.modal.nativeElement.style.display = "none";
   }
 }
+   //    let instahandle= {
+   //    //    //hande of owner of post
+   //    //    ownerID: this.ownerID.nativeElement.value,
+   //    //  }
+
+   //    //  console.log(ownerID);
+   //    //  this.sendReq.loadUserDetail(ownerID).subscribe(res => this.res = res);
+   //    //  console.log(this.res);
+   //    //  this.sendReq.loadUploads(ownerID).subscribe(res => this.res = res);
+   //     console.log(this.res);
+   //  }
+
+   // liked_func() { 
+   //       let likedObj = {
+   //         //hande of user who liked and photoID
+   //       //   ownerID: this.ownerID.nativeElement.value,  //from token
+   //       //   photoID: this.photoID.nativeElement.value
+   //       }
+   //       console.log(likedObj);
+   //       this.sendReq.likePost(likedObj).subscribe(res => this.res = res);
+   //       console.log(this.res);
+
+   // }

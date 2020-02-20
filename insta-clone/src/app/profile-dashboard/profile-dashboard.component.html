@@ -8,7 +8,7 @@
         <div class="col-md-4">
             <div class="d-flex">     
                 <h3 class="user-name">{{username}}</h3>
-                <button class="btn border btn-color btn-sm py-0 ml-2"><b>Edit Profile</b></button>
+                <a routerLink="/editProfile"><button class="btn border btn-color btn-sm py-0 ml-2"><b>Edit Profile</b></button></a>
             </div>
             <div>
                 <ul class="d-flex justify-content-between pl-0">
@@ -48,7 +48,7 @@
         </div>
         <div class="col-4">
             <h3 class="user-name">{{username}}</h3>
-            <button class="btn border btn-color btn-sm w-100" #editProfile>Edit Profile</button>
+            <button class="btn border btn-color btn-sm w-100" routerLink="/editProfile" #editProfile>Edit Profile</button>
         </div>
     </div>
 

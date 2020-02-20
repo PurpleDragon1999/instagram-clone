@@ -1,6 +1,7 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
-<link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet"/>
 <app-homenav></app-homenav>
 <section class="container-fluid">
     <!-- <div *ngFor="let img of allImages" class="mt-5 mx-auto"> -->
@@ -8,15 +9,15 @@
         <div class="row">
             
             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
-             
                     <div class="card w-75"  *ngFor="let post of postArray">
                           <div class="card-header">
                                <div>
                                  <img src={{basePath+post.url}} alt="icon" class="avatar">
+
                              </div>  
                   
                 <div class="profile-info">
-                    <div class="name">{{username}}</div>
+                  <a routerLink="/profile"> <div class="name">{{post.ownerId}}</div> </a>
                     <div class="location">{{location}}</div>
                     
                 </div>
@@ -30,13 +31,13 @@
                 
                           <div class="row">
                                <div class="column">
-                                   
-                                  
-                                     <img src="https://image.flaticon.com/icons/svg/25/25424.svg" class="icon"width="6%"/>
-                                   
-                                     <img src="https://image.flaticon.com/icons/svg/54/54916.svg"class="icon" width="6%"/>
-                                     
-                                     <img src="https://image.flaticon.com/icons/svg/126/126536.svg"class="icon" width="6%"/>
+                                <div id="activity">
+                                <input type="checkbox" id="togglefeed" class="visually-hidden">
+                                 <label for="togglefeed"  class="control"></label>
+                                </div> 
+                                   <div >
+                                    <i class="fa fa-comment-o fa-2x "></i>
+                                   </div>
                              </div>
                           </div>
                           <div class="like">
@@ -54,17 +55,40 @@
                                  <p class="comm-para"><span id="username"style="margin-right:20px">{{username2}}</span>{{comment2}}</p>
                                </div> 
                                   <div>
-                                    <input type="text"id="comment" placeholder="add your comment"> 
-                                   
-                                      <button onclick="addcomment()" id="btn">add comment</button>
-                                      <ul id="list">
-                                        <li>excellent</li>
-                                         </ul>
+                                    <input type="text" id="commentarea" #commentarea placeholder="add your comment">
+                                    <button (click)="addcomment(commentarea.value)">add comment</button> 
                                   </div>
                          </div>
                 </div>
+            </div>
+              
+                   <div class="col-lg-4 col-md-6 col-sm-0 col-xs-0">
+                      
+                        <div class="card shadow mb-3">
+                            <div class="card-body " >
+                              
+                              <h5>Suggestions for you</h5>
+                              <div *ngFor="let suggestion of suggestions">
+                                <button (click)="getfollowdata()" id="btn">follow</button>
+                              <p><img src={{suggestion.url}} class="rounded-circle float-left mr-2" width="40"/>
+                                <a href="#">{{suggestion.instaHandle}} <small class="text-muted">{{suggestion.name}}</small></a></p>
+                                <button class="follow"(click)="follow(username,suggestion.instaHandle)">
+                                  {{buttonName}}
+                                </button><hr>
+                               
+                              <hr>
+                            </div>
+                            </div>
+                            <div class="card-footer">
+                              <a href="#">Find more</a>
+                            
+                            </div>
+                            
+                          </div>
+                          
+            </div> 
+           
             </div>           
-        </div>
 
         <!-- Floating Button Here -->
         <div class="image-upload add-post">
@@ -95,6 +119,16 @@
             </div>
           </div>
         </div>
+
+        <!-- <section id="lab_social_icon_footer" class="plus">
+          <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+          <div class="container">
+          <div class="text-center center-block">
+          <i id="social-em" class="fa fa-plus fa-3x social"></i>
+          </div>
+          </div>
+          
+          </section> -->
 
 </section>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

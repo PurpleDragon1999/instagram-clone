@@ -5,6 +5,13 @@ class employee{
     }
 
     async createUser(req, res){
+        try{
+        let instaHandle={};
+       instaHandle =await model.user.get({"instaHandle":req.body.instaHandle});
+        console.log(instaHandle.instaHandle);
+        if(instaHandle.instaHandle!=req.body.instaHandle)
+        {
+           
         let userObject = {
             name : req.body.name,
             instaHandle : req.body.instaHandle,
@@ -14,6 +21,12 @@ class employee{
         };
         const user=await model.user.save(userObject);
         res.status(200).send("Signed Up Successfully");
+    }
+}
+catch(error)
+{
+    res.status(406).send("InstaHandle already exists!!");
+}
     }
 
     async checkUserAuthentication(req, res){

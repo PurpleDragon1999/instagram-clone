@@ -42,10 +42,7 @@
   width:50rem;
   height:100vh;
   max-width:100vw;
-  
 }
-
-
 .avatar {
   vertical-align: middle;
   width: 50px;
@@ -73,18 +70,17 @@
   cursor:pointer;
   width:100%;
  } 
- div,section{
-  border: 1 solid #000; 
-}
 .card{
 background:white;
 /* margin :0 100px;*/
 width:19.25rem;
 height:auto;
-border-radius:3px;
-top:-5px;
+top:75px;
  bottom:0;
-margin-left:10%
+margin-left:10%;
+border:none;
+margin-top:8%;
+border-radius:3px;
 
 }
 /* Create three equal columns that sits next to each other */
@@ -126,39 +122,18 @@ background-color:white;
 color:#999;
 line-height:inherit;
 }
-.like-button{
- 
- box-sizing:border-box;
- cursor:pointer;
- font-weight:600;
- text-align: center;
-  text-transform: inherit;
-  text-overflow: ellipsis;
-  
- background:0 0;
-  background-attachment: initial;
-  background-origin: initial;
-  background-clip: initial;
-  border:0;
-  width:auto;
-  user-select:none;
-  
-}
 .comments{
-
-background-color:white;
-color:black;
-line-height:inherit;
-display:flex;
-flex-direction:column;
- margin-top:-20px;
+  background-color:white;
+  color:black;
+  line-height:inherit;
+  display:flex;
+  flex-direction:column;
+  margin-top:-20px;
 }
 .comm-para{
-
-margin-bottom:0rem;   
- padding:0;
+  margin-left:2%;   
 }
-.card-footer1{
+.mycard-footer{
 padding:0;
 box-sizing :border-box;
 
@@ -168,15 +143,7 @@ box-sizing :border-box;
  text-decoration: none;
  text-transform:  blue;
 }
-#btn{
- align-items: center;
- background:0 0;
- border:0;
- cursor:pointer;
-padding:8px
 
-
-}
 button{
 text-transform:none;
 letter-spacing:normal;
@@ -185,41 +152,55 @@ text-align:center;
 box-sizing:border-box;
 
 }
-#list{
-color:black;
-}
+
 #comment{
   font: 1em sans-serif;
+  width:100%;
+}
+  .control::after {
+    content: url('../../assets/images/igheart.png');
+}
+/* #togglefeed:checked ~ .control::after {
+    content: url('../../assets/images/igheartfilled.png');
+} */
+#activity{
+  margin-top: 1vh;
+  margin-left: 6vw;
+  width:20%;
+}
+.visually-hidden {
+  position: absolute;
+  left: -100vw;
+  
+  
+}
+.control{
+  padding-left: 2vw;
+  padding-right: 2vw;
+  
+}
+button{
+  width:100px;
+  height:30px;
+  float:right;
+  background-color:white;
+  border:none;
+  color:blue;
 }
 
-#lab_social_icon_footer {
-
-background-color:#dedede;
-cursor:pointer;
- }
-.plus{
-margin-left:40vw;
-margin-right:50vw;
-color:#778899;
- }
-
-#lab_social_icon_footera {
-color:#778899 ;
- }
-
-#lab_social_icon_footer#social-tw:hover {
-color:#4099FF;
- }
-
-
-#lab_social_icon_footer#social-em:hover {
-color:#1a4066 ;
- }
-.add-post{
-  position: fixed;
-  left: 85%;
-  top: 85%;
-}
-.image-upload>input {
+button .msg-follow,
+button .msg-unfollow{
   display: none;
+}
+
+button .msg-follow{
+  display: inline;
+}
+
+button.following .msg-follow{
+  display: none;
+}
+
+button.following:not(.wait):hover .msg-unfollow{
+  display: inline;
 }
