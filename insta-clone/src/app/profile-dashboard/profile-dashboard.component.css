@@ -20,7 +20,11 @@ b{
 }
 li{
     list-style-type: none;
+    font-weight: bolder;
 }
 h5{
     font-weight: normal;
+}
+#editProfile{
+    font-weight: bolder;
 }

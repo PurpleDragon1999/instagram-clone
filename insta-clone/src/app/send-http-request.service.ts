@@ -50,8 +50,12 @@ export class SendHttpRequestService {
   }
 
   userData(): Observable<any>{
-    return this.http.get("http://localhost:8080/user:"+this.jsonDecoder(localStorage.getItem("token")).data._id,
-       {headers: this.header_token});
+    console.log("http://localhost:8080/user/"+this.jsonDecoder(localStorage.getItem("token")).data._id);
+    return this.http.get("http://localhost:8080/user/"+this.jsonDecoder(localStorage.getItem("token")).data._id,
+       {headers: this.header_token}).pipe(
+        tap(_ => this.log("Got Posts")),
+        catchError(this.handleError<any>('Some Error Occurred'))
+      );
   }
 
   /**

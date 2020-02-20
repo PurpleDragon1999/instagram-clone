@@ -13,13 +13,13 @@
             <div>
                 <ul class="d-flex justify-content-between pl-0">
                     <li class="mr-3">
-                        <span><b>{{posts}}</b> posts</span>
+                        <span>{{posts}} <b>posts</b></span>
                     </li>
                     <li class="mr-3">
-                        <span><b>{{following}}</b> following</span>
+                        <span>{{following}} <b>following</b></span>
                     </li>
                     <li class="mr-3">
-                        <span><b>{{followers}}</b> followers</span>
+                        <span>{{followers}} <b>followers</b></span>
                     </li>
                 </ul>
             </div>
@@ -29,6 +29,10 @@
             </div>
         </div>
     </div>
+    <hr class="m-2">
+    <p class="text-center">Posts</p>
+    <hr class="m-2 mb-2"> 
+    <app-image-gallery></app-image-gallery>
 </div>
 
 
@@ -39,16 +43,19 @@
         <div class="col-3 offset-1">
             <img src="../../assets/ss.png" alt="Profile Image" class="profile-sm-img rounded-circle">
         </div>    
-        <div class="col-7">
+        <div class="col-1">
+
+        </div>
+        <div class="col-4">
             <h3 class="user-name">{{username}}</h3>
-            <button class="btn border btn-color btn-sm w-100"><b>Edit Profile</b></button>
+            <button class="btn border btn-color btn-sm w-100" #editProfile>Edit Profile</button>
         </div>
     </div>
 
     <div class="mx-3 mt-3">
-        <h6>Shubham Sharma</h6>
+        <h6>{{name}}</h6>
         <p>
-            I am a Software Developer. Currently I am an Intern at Cyber Group. I am pursuing B.Tech from Sharda University.
+            {{about}}
         </p>
     </div>
 
@@ -56,16 +63,18 @@
     <div class="d-flex ">
         <ul class="d-flex justify-content-around my-auto pl-0 w-100">
             <li class="mr-3">
-                <span><b>{{posts}}</b> posts</span>
+                <span>{{posts}} <b>posts</b></span>
             </li>
             <li class="mr-3">
-                <span><b>{{following}}</b> following</span>
+                <span>{{following}} <b>following</b></span>
             </li>
             <li class="mr-3">
-                <span><b>{{followers}}</b> followers</span>
+                <span>{{followers}} <b>followers</b></span>
             </li>
         </ul>
     </div>
     <hr class="m-3">
+    <app-image-gallery></app-image-gallery>
 </div>
-<app-image-gallery></app-image-gallery>
+
+

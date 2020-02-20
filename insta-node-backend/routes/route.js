@@ -5,7 +5,7 @@ var fileName;
 
 var storage = multer.diskStorage({
     destination: function (req, file, callback) {
-        var dir = '../postsDb';
+        var dir = 'D:\\Instagram-Clone\\instagram-clone\\insta-node-backend\\postsDB';
         if (!fs.existsSync(dir)){
             fs.mkdirSync(dir);
         }
@@ -24,6 +24,7 @@ module.exports=(app) => {
          app.post("/login", controller.loginSignup.checkUserAuthentication);
          app.post("/signup", controller.loginSignup.createUser);
          app.get("/user", controller.user.showAll);
+         app.get("/user/:id", controller.user.show);
          app.put("/user/:id", controller.user.update);
          app.delete("/user/:id", controller.user.deleteAccount);
 

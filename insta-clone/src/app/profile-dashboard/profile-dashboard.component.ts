@@ -10,18 +10,40 @@ export class ProfileDashboardComponent implements OnInit {
 
   constructor(private sendReq: SendHttpRequestService) { }
 
-  username: String = "_shubham_1999";
-  posts: Number = 22;
-  following: Number = 133;
-  followers: Number = 199;
-  name: String = "Shubham Sharma";
+  userArray: any;
+
+  username: String = "loading..."
+  posts: Number = 0;
+  following: Number = 0;
+  followers: Number = 0;
+  name: String = "loading...";
   bio: String = "I am a Software Developer. Currently I am an Intern at Cyber Group. I am pursuing B.Tech from Sharda University.";
+  
   ngOnInit() {
-    this.loadPosts();
+    this.loadUserData();
   }
 
-  loadPosts(){
-    // this.sendReq.
+  loadUserData(){
+    this.sendReq.userData().subscribe(res => {
+      console.log(res);
+      this.userArray = res;
+      console.log(this.userArray);
+      this.setUserData();
+    });
+  }
+
+  setUserData(){
+    this.username = this.userArray[0].instaHandle;
+    this.posts = this.userArray[0].postsCount;
+    this.following = this.userArray[0].following;
+    this.followers = this.userArray[0].followers;
+    this.name = this.userArray[0].name;
+    if(this.userArray[0].about != null){
+      this.bio = this.userArray[0].about;
+    }else{
+      this.bio = "You can add your description here !"
+    }
+    
   }
 
 }

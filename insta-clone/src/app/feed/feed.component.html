@@ -9,11 +9,10 @@
             
             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
              
-                    <div class="card w-75"  *ngFor="let img of allImages">
-           
+                    <div class="card w-75"  *ngFor="let post of postArray">
                           <div class="card-header">
                                <div>
-                                 <img src={{img}} alt="post"class="avatar">
+                                 <img src={{post.url}} alt="post" class="avatar">
                              </div>  
                   
                 <div class="profile-info">
