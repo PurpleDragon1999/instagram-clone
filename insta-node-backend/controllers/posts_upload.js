@@ -11,7 +11,6 @@ class posts {
         if(jwtHandler.tokenVerifier(req.headers.token)){
             if (!req.file) {
                 console.log("No file is available!");
-                
                 return res.send({
                     success: false
                 });
@@ -21,11 +20,12 @@ class posts {
                 console.log(req.headers.token);
                 let postObj = {
                     ownerId: req.body.ownerId,
-                    url: req.file.path,
+                    url: req.file.path.substring(43),
                     caption: req.body.caption,
                     createdAt: Date.now()
                 };
-                console.log(postObj);
+
+                console.log(postObj.url);
                 try{
                     const tempObj = await model.posts.save(postObj);
                     return res.status(200).send("Uploaded");

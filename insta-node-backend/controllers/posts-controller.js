@@ -55,7 +55,7 @@ class employee{
        console.log( typeof(token.data._id));
         if(token)
         {
-            let userObj= await model.posts.get({_id: req.params.id});
+            let userObj= await model.posts.get({"ownerId": req.params.id});
             console.log(userObj);
             res.send(userObj);
         }

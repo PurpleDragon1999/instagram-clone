@@ -5,17 +5,17 @@
     <title>{{title}}</title>
     <div class="container">
          <div class="gallery">
-             <div *ngFor = "let img of allImages">
+             <div *ngFor = "let post of postsArray">
                   <div class="gallery-item">
-                    <img src={{img}} class="gallery-image" alt="">
+                    <img src={{basePath+post.url}} class="gallery-image" alt="">
                        
-                                  <div class="gallery-item-info">
-                                       <ul>
-                                          <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart-o" aria-hidden="true"></i> 89</li>
-                                          <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fa fa-comment" aria-hidden="true"></i> 5</li>
-                                      </ul>
-                                 </div>
-                            </div>
+                         <div class="gallery-item-info">
+                              <ul>
+                                   <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart-o" aria-hidden="true"></i>{{post.likesCount}}</li>
+                                   <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fa fa-comment" aria-hidden="true"></i>{{post.commentsCount}}</li>
+                              </ul>
+                         </div>
+                    </div>
             </div>
               <!--end of gallery-->
     

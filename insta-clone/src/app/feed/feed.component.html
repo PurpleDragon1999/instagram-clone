@@ -12,7 +12,7 @@
                     <div class="card w-75"  *ngFor="let post of postArray">
                           <div class="card-header">
                                <div>
-                                 <img src={{post.url}} alt="post" class="avatar">
+                                 <img src={{basePath+post.url}} alt="icon" class="avatar">
                              </div>  
                   
                 <div class="profile-info">
@@ -24,7 +24,7 @@
 
                
              <div id="#responsive ">
-                <img src={{img}} class=" image"  alt="post">
+                <img src={{basePath+post.url}} class=" image"  alt="post">
                </div>
                        
                 
@@ -40,14 +40,12 @@
                              </div>
                           </div>
                           <div class="like">
-                              
-                              4944 likes
-                            
+                           {{post.likesCount}}
                           </div>
                           <div class="mycard-footer"> 
                                <div class="comment-intro">
                                    <a href="/feed" class="comment-link">
-                                    <p>view all 24 comments</p>
+                                    <p>View all {{post.commentsCount}} comments</p>
                                 </a>   
                                 </div>
                               
@@ -64,17 +62,16 @@
                                          </ul>
                                   </div>
                          </div>
-                    
                 </div>
             </div>           
         </div>
 
         <!-- Floating Button Here -->
         <div class="image-upload add-post">
-          <label for="file-input">
+          <label for="file-input" (click)="openModal()">
             <img src="../../assets/add-btn2.png"/>
           </label>
-          <button id="file-input" type="file" (click)="openModal()"></button>
+          <!-- <button id="file-input" type="file" (click)="openModal()"></button> -->
         </div>
 
         <!-- Modal here -->
@@ -98,16 +95,6 @@
             </div>
           </div>
         </div>
-
-        <section id="lab_social_icon_footer" class="plus">
-          <!-- Include Font Awesome Stylesheet in Header -->
-          <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-          <div class="container">
-          <div class="text-center center-block">
-          <i id="social-em" class="fa fa-plus fa-3x social"></i>
-          </div>
-          </div>
-          </section>
 
 </section>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

@@ -5,7 +5,7 @@ var fileName;
 
 var storage = multer.diskStorage({
     destination: function (req, file, callback) {
-        var dir = 'D:\\Instagram-Clone\\instagram-clone\\insta-node-backend\\postsDB';
+        var dir = 'D:\\Instagram-Clone\\instagram-clone\\postsDB';
         if (!fs.existsSync(dir)){
             fs.mkdirSync(dir);
         }

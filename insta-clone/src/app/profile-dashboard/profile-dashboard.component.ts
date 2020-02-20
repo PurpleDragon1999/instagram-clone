@@ -25,9 +25,7 @@ export class ProfileDashboardComponent implements OnInit {
 
   loadUserData(){
     this.sendReq.userData().subscribe(res => {
-      console.log(res);
       this.userArray = res;
-      console.log(this.userArray);
       this.setUserData();
     });
   }
@@ -43,7 +41,5 @@ export class ProfileDashboardComponent implements OnInit {
     }else{
       this.bio = "You can add your description here !"
     }
-    
   }
-
 }

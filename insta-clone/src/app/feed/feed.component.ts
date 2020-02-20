@@ -18,7 +18,7 @@ export class FeedComponent implements OnInit {
   @ViewChild('caption', {static: false}) caption: ElementRef;
 
   postArray: any;
-  basePath: String = "../../../";
+  basePath: String = "http://localhost:8081/";
 
   public uploader: FileUploader = new FileUploader({
     url: URL,
@@ -60,6 +60,4 @@ export class FeedComponent implements OnInit {
   closeModal(){
     this.modal.nativeElement.style.display = "none";
   }
-  
-
 }
